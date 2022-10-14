@@ -35,7 +35,7 @@ public class FinancingTask {
     /**
      * 融资任务
      */
-    @Scheduled(cron = "0 0 2 1 * ?")
+    @Scheduled(cron = "0 0 2 1 1/1 ?")
     private void financing() {
         // 初始化资金池
         List<CapitalType> capitalTypes = this.capitalTypeService.findAll();
