@@ -56,8 +56,8 @@ public class ExpenseServiceImpl implements IExpenseService {
         boolean isNeedBorrow = amount.compareTo(capitalPool.getBalance()) > 0;
         double borrowingAmount = 0D;
         if (isNeedBorrow) {
-            capitalPool.setBalance(0D);
             borrowingAmount = BigDecimal.valueOf(amount).subtract(BigDecimal.valueOf(capitalPool.getBalance())).doubleValue();
+            capitalPool.setBalance(0D);
             capitalPool.setBorrowingAmount(BigDecimal.valueOf(Optional.ofNullable(capitalPool.getBorrowingAmount())
                     .orElse(0D)).add(BigDecimal.valueOf(borrowingAmount)).doubleValue());
         } else {
