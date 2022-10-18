@@ -60,6 +60,18 @@ public interface ICapitalPoolService {
     void update(CapitalPool capitalPool);
 
     /**
+     * 支出
+     * @param capitalTypeId 资金类型
+     * @param amount 金额
+     */
+    void expense(Long capitalTypeId, Double amount);
+
+    /**
+     * 融资
+     */
+    void financing();
+
+    /**
      * 汇总当前时间的资金池信息
      * @return 资金池汇总信息
      */

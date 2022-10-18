@@ -14,7 +14,4 @@ public class ExpenseQuery {
 
     private Double amount;
 
-    @JsonProperty("is_borrow")
-    private Short isBorrow;
-
 }
