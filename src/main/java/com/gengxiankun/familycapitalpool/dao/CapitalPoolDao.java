@@ -24,6 +24,14 @@ public interface CapitalPoolDao extends JpaRepository<CapitalPool, Long>, Serial
     List<CapitalPool> findByTime(LocalDateTime time);
 
     /**
+     * 获取指定时间节点的资金池 ID 列表
+     * @param time 时间节点
+     * @return 资金池列表
+     */
+    @Query("select p.id from CapitalPool p where p.time = ?1")
+    List<Long> findIdByTime(LocalDateTime time);
+
+    /**
      * 获取指定时间节点和类型的资金池
      * @param time 时间节点
      * @param capitalTypeId 资金类型

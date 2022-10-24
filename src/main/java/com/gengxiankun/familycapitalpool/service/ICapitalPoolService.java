@@ -20,6 +20,13 @@ public interface ICapitalPoolService {
     List<CapitalPool> findByTime(LocalDateTime time);
 
     /**
+     * 获取指定时间节点的资金池 ID 列表
+     * @param time 时间节点
+     * @return ID 列表
+     */
+    List<Long> findIdByTime(LocalDateTime time);
+
+    /**
      * 获取上次的资金池
      * @return 资金池
      */

@@ -55,6 +55,11 @@ public class CapitalPoolServiceImpl implements ICapitalPoolService {
     }
 
     @Override
+    public List<Long> findIdByTime(LocalDateTime time) {
+        return this.capitalPoolDao.findIdByTime(time);
+    }
+
+    @Override
     public List<CapitalPool> findByLastTime() {
         return this.findByTime(TimeUtils.getFirstDayOfTheLastMonth());
     }

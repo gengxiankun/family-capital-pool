@@ -1,10 +1,7 @@
 package com.gengxiankun.familycapitalpool.controller;
 
 import com.gengxiankun.familycapitalpool.service.INotifyService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
