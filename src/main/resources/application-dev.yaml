@@ -15,3 +15,10 @@ spring:
       ddl-auto: update
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+notion:
+  secret:
+  database_id:
+
+notify:
+  key:

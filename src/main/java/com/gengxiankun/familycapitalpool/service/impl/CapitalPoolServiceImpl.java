@@ -5,11 +5,14 @@ import com.gengxiankun.familycapitalpool.dto.CapitalPoolWithTypeDto;
 import com.gengxiankun.familycapitalpool.entity.Bill;
 import com.gengxiankun.familycapitalpool.entity.CapitalPool;
 import com.gengxiankun.familycapitalpool.entity.CapitalType;
+import com.gengxiankun.familycapitalpool.event.NotionEvent;
 import com.gengxiankun.familycapitalpool.service.IBillService;
 import com.gengxiankun.familycapitalpool.service.ICapitalPoolService;
 import com.gengxiankun.familycapitalpool.service.ICapitalTypeService;
 import com.gengxiankun.familycapitalpool.utils.TimeUtils;
 import com.gengxiankun.familycapitalpool.vo.CapitalPoolSummaryInfoVo;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,20 +27,16 @@ import java.util.Optional;
  * @author xiankun.geng
  */
 @Service
+@RequiredArgsConstructor
 public class CapitalPoolServiceImpl implements ICapitalPoolService {
+
+    private final ApplicationContext applicationContext;
 
     private final CapitalPoolDao capitalPoolDao;
 
     private final ICapitalTypeService capitalTypeService;
 
     private final IBillService billService;
-
-    public CapitalPoolServiceImpl(CapitalPoolDao capitalPoolDao, ICapitalTypeService capitalTypeService,
-                                  IBillService billService) {
-        this.capitalPoolDao = capitalPoolDao;
-        this.capitalTypeService = capitalTypeService;
-        this.billService = billService;
-    }
 
     @Override
     public void save(CapitalPool capitalPool) {
@@ -109,6 +108,9 @@ public class CapitalPoolServiceImpl implements ICapitalPoolService {
                 .capitalTypeId(capitalTypeId)
                 .build();
         this.billService.save(bill);
+
+        // 发布订阅
+        this.applicationContext.publishEvent(new NotionEvent(bill.getId()));
     }
 
     @Override

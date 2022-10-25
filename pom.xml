@@ -90,6 +90,13 @@
             <artifactId>caffeine</artifactId>
         </dependency>
 
+        <!-- notion -->
+        <dependency>
+            <groupId>com.gengxiankun</groupId>
+            <artifactId>notion</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

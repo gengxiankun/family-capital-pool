@@ -1,10 +1,12 @@
 package com.gengxiankun.familycapitalpool.service.impl;
 
+import com.gengxiankun.familycapitalpool.dao.BillDao;
 import com.gengxiankun.familycapitalpool.dto.CapitalPoolWithTypeDto;
 import com.gengxiankun.familycapitalpool.entity.Bill;
 import com.gengxiankun.familycapitalpool.service.INotifyService;
 import com.gengxiankun.familycapitalpool.vo.CapitalPoolSummaryInfoVo;
 import com.github.benmanes.caffeine.cache.Cache;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -14,15 +16,14 @@ import java.util.*;
  * @author xiankun.geng
  */
 @Service
+@RequiredArgsConstructor
 public class PushDeerServiceImpl implements INotifyService {
 
     private final Cache<String, List<String>> notifyCache;
 
-    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private final BillDao billDao;
 
-    public PushDeerServiceImpl(Cache notifyCache) {
-        this.notifyCache = notifyCache;
-    }
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Override
     public void save(String key) {

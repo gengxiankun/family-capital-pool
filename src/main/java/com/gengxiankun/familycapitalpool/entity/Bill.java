@@ -35,4 +35,8 @@ public class Bill extends AbstractTableEntity {
     @JoinColumn(name = "capitalTypeId", referencedColumnName = "id", insertable = false, updatable = false)
     private CapitalType capitalType;
 
+    @ManyToOne(targetEntity = CapitalPool.class)
+    @JoinColumn(name = "capitalPoolId", referencedColumnName = "id", insertable = false, updatable = false)
+    private CapitalPool capitalPool;
+
 }
